@@ -1,12 +1,13 @@
-import { CoffeeMaker } from '../../src/CoffeeMaker';
-import { HardwareFake } from './hardwareFake';
+import { HardwareFake, HardwareFakeInterface } from './hardwareFake';
+import { CoffeeMakerHarness } from './CoffeeMakerHarness';
 
 export class CoffeeMakerBuilder {
   public static Default() {
     return new CoffeeMakerBuilder().Build();
   }
 
-  public Build(): CoffeeMaker {
-    return new CoffeeMaker(new HardwareFake());
+  public Build(): CoffeeMakerHarness  {
+    let hardware: HardwareFakeInterface = new HardwareFake();
+    return new CoffeeMakerHarness (hardware);
   }
 }

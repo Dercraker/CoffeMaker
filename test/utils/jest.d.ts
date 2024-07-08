@@ -4,6 +4,10 @@ declare global {
       NCoffeeDelivered(expected: number): R;
       NoCoffeeDelivered(): R;
       OneCoffeeDelivered(): R;
+      NoCupDetected(): R;
+      OneCupDetected(): R;
+      NoCupProvided(): R;
+      OneCupProvided(): R;
     }
   }
 }
