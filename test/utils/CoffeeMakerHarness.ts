@@ -12,6 +12,7 @@ export class CoffeeMakerHarness extends CoffeeMaker {
 
     public SimulerInsertionPièce(pièce: Piece) : void{
         this.hardware.SimulerInsertionPièce(pièce)
+        // TODO : faire la méthode ProvideCup
     }
 
     public CountInvocationsMakeACoffee() {

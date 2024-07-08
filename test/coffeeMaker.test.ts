@@ -66,6 +66,8 @@ describe('Gestion goblet', () => {
     // ETANT DONNE une machine a café avec aucun gobelet détecté
     const coffeeMaker = CoffeeMakerBuilder.Default();
 
+    // TODO : faire la méthode ProvideCup
+
     //* Act
     // QUAND on insère une pièce
     coffeeMaker.SimulerInsertionPièce(Piece.CTS_50)
