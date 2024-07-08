@@ -63,23 +63,18 @@ describe('Gestion goblet', () => {
   // TODO Si un récipient n'est pas detecté > Mettre un gobelet ET vérifier la présence d'un goblet ET couler un café
   test('Cas pas de récipient et stock de globlet OK', () => {
     //* Arrange
-    // ETANT DONNE une machine a café
+    // ETANT DONNE une machine a café avec aucun gobelet détecté
     const coffeeMaker = CoffeeMakerBuilder.Default();
-    
-    // QUAND aucun goblet est detecter
-    expect(coffeeMaker).NoCupDetected()
 
     //* Act
-    // Et on insère une pièce
+    // QUAND on insère une pièce
     coffeeMaker.SimulerInsertionPièce(Piece.CTS_50)
-    coffeeMaker.ProvideCup()
 
     //* Assert
     //Alors un goblet est ajouté
     expect(coffeeMaker).OneCupProvided()
-    //ET un goblet est detecter
+    //ET un goblet est detecté
     expect(coffeeMaker).OneCupDetected()
-
   })
 
 
