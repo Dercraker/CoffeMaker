@@ -12,7 +12,6 @@ export class CoffeeMakerHarness extends CoffeeMaker {
 
     public SimulerInsertionPièce(pièce: Piece) : void{
         this.hardware.SimulerInsertionPièce(pièce)
-        // TODO : faire la méthode ProvideCup
     }
 
     public CountInvocationsMakeACoffee() {
@@ -27,7 +26,11 @@ export class CoffeeMakerHarness extends CoffeeMaker {
         return this.hardware.CountInvocationProvideCup();
     }
 
-    public ProvideCup() {
-        return this.hardware.ProvideCup();
+    public IsCupPresent() {
+        return this._isCupPresent;
+    }
+
+    public GetIsCupPresent(){
+        return this.hardware.GetIsCupPresent();
     }
 }

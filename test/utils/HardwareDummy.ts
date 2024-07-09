@@ -3,6 +3,9 @@ import { ButtonCodes, CoinCodes} from "../../src/hardware/hardware.interface";
 import {HardwareFakeInterface} from "./hardwareFake";
 
 export class HardwareDummy implements HardwareFakeInterface {
+    GetIsCupPresent(): boolean {
+        throw new Error("Method not implemented.");
+    }
     DropCashback(coin_code: CoinCodes): boolean {
         throw new Error("Method not implemented.");
     }

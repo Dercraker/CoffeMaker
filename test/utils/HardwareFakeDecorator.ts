@@ -1,12 +1,13 @@
 import {ButtonCodes} from "../../src/hardware/hardware.interface";
-import {HardwareFake} from "./hardwareFake";
+import {HardwareFake, HardwareFakeInterface} from "./hardwareFake";
 
 export class HardwareFakeDecorator extends HardwareFake {
-    private _decorated: HardwareFake;
+    private _decorated: HardwareFakeInterface;
 
-    public constructor(decorated: HardwareFake) {
+    public constructor(decorated: HardwareFakeInterface) {
         super();
         this._decorated = decorated;
+        this._isCupPresent = false;
     }
 
     RegisterMoneyInsertedCallback(callback: (coinValue: number) => void): void {
@@ -45,11 +46,18 @@ export class HardwareFakeDecorator extends HardwareFake {
 }
 
 export class PénurieGobeletsDecorator extends HardwareFakeDecorator {
-    public constructor(decorated: HardwareFake) {
+    public constructor(decorated: HardwareFakeInterface) {
         super(decorated);
+        this._isCupPresent = false;
+    }
+
+    IsCupPresent(): boolean {
+        this._invocationsIsCupPresent++
+        return false;
     }
 
     ProvideCup(): void {
+        this._invocationsProvideCup++
         throw new Error("Plus de gobelets")
     }
 }

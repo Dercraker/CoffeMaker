@@ -64,7 +64,8 @@ if (!(actual instanceof CoffeeMakerHarness))
     throw new Error('Only works with CoffeeMaker HardWare Harness');
 
   const delta = actual.CountInvocationIsCupPresent();
-  const pass = delta == 0;
+  const isPresent = actual.GetIsCupPresent();
+  const pass = delta == 1 && !isPresent;
   const message = pass
     ? `Aucun gobelet n'est détecté, aucun ne l'a été.`
     : `Aucun gobelet n'est détecté, ${delta} ont été servis.`;
@@ -82,7 +83,8 @@ if (!(actual instanceof CoffeeMakerHarness))
     throw new Error('Only works with CoffeeMaker HardWare Harness');
 
   const delta = actual.CountInvocationIsCupPresent();
-  const pass = delta == 1;
+  const isPresent = actual.GetIsCupPresent();
+  const pass = delta == 2 && isPresent;
   const message = pass
     ? `Un gobelet devait être détecté, 1 goblet a été détecté.`
     : `Un gobelet devait être détecté, aucun ne l'a été.`;
@@ -121,7 +123,7 @@ if (!(actual instanceof CoffeeMakerHarness))
   const pass = delta == 1;
   const message = pass
     ? `Un gobelet devait être servi, 1 a été servi.`
-    : `Un gobelet ne devait être servi, ${delta} ont été servis.`;
+    : `Un gobelet devait être servi, ${delta} ont été servis.`;
 
   return {
     message: () => message,

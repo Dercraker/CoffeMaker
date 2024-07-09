@@ -60,13 +60,10 @@ describe('MVP', () => {
 
 
 describe('Gestion goblet', () => {
-  // TODO Si un récipient n'est pas detecté > Mettre un gobelet ET vérifier la présence d'un goblet ET couler un café
   test('Cas pas de récipient et stock de globlet OK', () => {
     //* Arrange
     // ETANT DONNE une machine a café avec aucun gobelet détecté
     const coffeeMaker = CoffeeMakerBuilder.Default();
-
-    // TODO : faire la méthode ProvideCup
 
     //* Act
     // QUAND on insère une pièce
@@ -77,6 +74,8 @@ describe('Gestion goblet', () => {
     expect(coffeeMaker).OneCupProvided()
     //ET un goblet est detecté
     expect(coffeeMaker).OneCupDetected()
+    //ET un café est coulé
+    expect(coffeeMaker).OneCoffeeDelivered()
   })
 
 
@@ -84,6 +83,8 @@ describe('Gestion goblet', () => {
   // TODO Si un gobelet est insérer vérifier que le stock de goblet est décrémenté
   // TODO Si un récipient n'est pas detecté ET que le stock de goblet == 0 -> Pas de café ET remboursement
   // TODO Si un stock de goblet est réapprovisionné -> Stock de goblet > 0
+
+  // TODO Rendre 10cts si le gobelet est présent 
 })
 
 //? Que faire en cas de rupture de stock de goblet ? Servire dès qu'il a une tasse et remboursser si pas de tasse
