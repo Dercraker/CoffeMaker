@@ -1,15 +1,21 @@
 import { Piece } from "../../src/Piece";
-import { ButtonCodes } from "../../src/hardware/hardware.interface";
+import { ButtonCodes, CoinCodes} from "../../src/hardware/hardware.interface";
 import {HardwareFakeInterface} from "./hardwareFake";
 
 export class HardwareDummy implements HardwareFakeInterface {
+    DropCashback(coin_code: CoinCodes): boolean {
+        throw new Error("Method not implemented.");
+    }
+    PourChocolate(): boolean {
+        throw new Error("Method not implemented.");
+    }
     SimulerInsertionPièce(pièce: Piece): void {
         throw new Error("Method not implemented.");
     }
     CountInvocationsMakeACoffee(): number {
         throw new Error("Method not implemented.");
     }
-    RegisterMoneyInsertedCallback(callback: (coinValue: number) => void): void {
+    RegisterMoneyInsertedCallback(callback: (coinValue: CoinCodes) => void): void {
         throw new Error("Method not implemented.");
     }
     FlushStoredMoney(): void {
