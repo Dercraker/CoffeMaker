@@ -27,8 +27,6 @@ export class CoffeeMaker {
 
     if (!this._hardware.IsCupPresent()) this._hardware.ProvideCup();
 
-    // if (this._hardware.IsCupProvided()) throw new Error("refund the client");
-
     this._hardware.MakeACoffee();
     this._receivedMoney += coin.getValue();
   }

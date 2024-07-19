@@ -8,6 +8,7 @@ declare global {
       OneCupDetected(): R;
       NoCupProvided(): R;
       OneCupProvided(): R;
+      OneCoffeeDeliveredWithCup(): R;
     }
   }
 }

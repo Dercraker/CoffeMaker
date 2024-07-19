@@ -45,10 +45,33 @@ export class HardwareFakeDecorator extends HardwareFake {
     }
 }
 
-export class PénurieGobeletsDecorator extends HardwareFakeDecorator {
+export class DefaultWithCupDecorator extends HardwareFakeDecorator {
+    public constructor(decorated: HardwareFakeInterface) {
+        super(decorated);
+    }
+}
+
+export class PénurieGobeletsWithoutCupDecorator extends HardwareFakeDecorator {
     public constructor(decorated: HardwareFakeInterface) {
         super(decorated);
         this._isCupPresent = false;
+    }
+
+    IsCupPresent(): boolean {
+        this._invocationsIsCupPresent++
+        return false;
+    }
+
+    ProvideCup(): void {
+        this._invocationsProvideCup++
+        throw new Error("Plus de gobelets")
+    }
+}
+
+export class PénurieGobeletsWithCupDecorator extends HardwareFakeDecorator {
+    public constructor(decorated: HardwareFakeInterface) {
+        super(decorated);
+        this._isCupPresent = true;
     }
 
     IsCupPresent(): boolean {

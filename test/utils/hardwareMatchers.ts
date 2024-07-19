@@ -36,6 +36,22 @@ const OneCoffeeDelivered: MatcherFunction = (actual: unknown) => {
   };
 };
 
+const OneCoffeeDeliveredWithCup: MatcherFunction = (actual: unknown) => {
+  if (!(actual instanceof CoffeeMakerHarness))
+    throw new Error('Only works with CoffeeMaker HardWare Harness');
+
+  const delta = actual.CountInvocationsMakeACoffee();
+  const pass = delta == 1;
+  const message = pass
+    ? `Un café devait être servi, ${delta} ne l'a été.`
+    : `Zéro ou plusieurs cafés devaient être servis, Un a été servi.`;
+
+  return {
+    message: () => message,
+    pass: pass,
+  };
+};
+
 const NCoffeeDelivered: MatcherFunction<[expected: unknown]> = (
   actual: unknown,
   expected: unknown,
@@ -138,5 +154,6 @@ expect.extend({
   NoCupDetected,
   OneCupDetected,
   NoCupProvided,
-  OneCupProvided
+  OneCupProvided,
+  OneCoffeeDeliveredWithCup
 });

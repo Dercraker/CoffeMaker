@@ -8,6 +8,7 @@ export interface HardwareFakeInterface extends HardwareInterface {
   CountInvocationIsCupPresent(): number;
   CountInvocationProvideCup(): number;
   GetIsCupPresent(): boolean;
+  SetCupPresent(isCupPresent: boolean): void;
 }
 
 export class HardwareFake extends HardwareDummy {
@@ -42,7 +43,7 @@ export class HardwareFake extends HardwareDummy {
 
   IsCupPresent(): boolean {
     this._invocationsIsCupPresent++;
-    return this._isCupPresent; 
+    return this._isCupPresent;
   }
 
   public CountInvocationIsCupPresent() : number {
@@ -55,5 +56,9 @@ export class HardwareFake extends HardwareDummy {
 
   public CountInvocationProvideCup() : number {
       return this._invocationsProvideCup;
+  }
+
+  public SetCupPresent(isCupPresent: boolean): void {
+    this._isCupPresent = isCupPresent;
   }
 }
