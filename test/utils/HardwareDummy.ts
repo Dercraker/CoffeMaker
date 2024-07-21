@@ -3,6 +3,9 @@ import { ButtonCodes, CoinCodes} from "../../src/hardware/hardware.interface";
 import {HardwareFakeInterface} from "./hardwareFake";
 
 export class HardwareDummy implements HardwareFakeInterface {
+    CountRepayment(): number {
+        throw new Error("Method not implemented.");
+    }
     SetCupPresent(isCupPresent: boolean): void {
         throw new Error("Method not implemented.");
     }
@@ -61,6 +64,9 @@ export class HardwareDummy implements HardwareFakeInterface {
         throw new Error("Method not implemented.");
     }
     CountInvocationProvideCup(): number {
+        throw new Error("Method not implemented.");
+    }
+    CountInvocationRepayment(): number {
         throw new Error("Method not implemented.");
     }
 }

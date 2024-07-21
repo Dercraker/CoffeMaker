@@ -82,7 +82,6 @@ describe('Gestion goblet', () => {
     //* Arrange
     // ETANT DONNE une machine a café avec un gobelet détecté
     const coffeeMaker = CoffeeMakerBuilder.Default(true);
-
     //* Act
     // QUAND on insère une pièce
     coffeeMaker.SimulerInsertionPièce(Piece.CTS_50)
@@ -91,11 +90,10 @@ describe('Gestion goblet', () => {
     //Alors un goblet est ajouté
     expect(coffeeMaker).NoCupProvided()
     //ET un café est coulé
-    expect(coffeeMaker).OneCoffeeDeliveredWithCup()
+    expect(coffeeMaker).OneCoffeeDeliveredWithoutCup()
   })
 
   test('Cas récipient non-présent envoie et remboursement si pas de gobelet', () => {
-    // TODO Si un récipient n'est pas detecté ET que le stock de goblet == 0 -> Pas de café ET remboursement
     //* Arrange
     // ETANT DONNE une machine a café avec un gobelet détecté
     const coffeeMaker = CoffeeMakerBuilder.WithPénurieGobeletsAndNoCup()
@@ -109,8 +107,9 @@ describe('Gestion goblet', () => {
     expect(coffeeMaker).NoCupProvided()
     //ET un café est coulé
     expect(coffeeMaker).OneCoffeeDeliveredWithCup()
+
+    expect(coffeeMaker).RepaymentProvided()
   })
-  // TODO Si un stock de goblet est réapprovisionné -> Stock de goblet > 0
 
   // TODO Rendre 10cts si le gobelet est présent 
 })

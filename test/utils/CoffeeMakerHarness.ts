@@ -33,4 +33,8 @@ export class CoffeeMakerHarness extends CoffeeMaker {
     public GetIsCupPresent(){
         return this.hardware.GetIsCupPresent();
     }
+
+    public CountRepayment(){
+        return this.hardware.CountRepayment();
+    }
 }

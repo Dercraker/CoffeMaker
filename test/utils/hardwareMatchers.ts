@@ -147,6 +147,38 @@ if (!(actual instanceof CoffeeMakerHarness))
   };
 }
 
+const OneCoffeeDeliveredWithoutCup: MatcherFunction = (actual: unknown) => {
+  if (!(actual instanceof CoffeeMakerHarness))
+    throw new Error('Only works with CoffeeMaker HardWare Harness');
+
+  const delta = actual.CountInvocationsMakeACoffee();
+  const pass = delta == 1;
+  const message = pass
+    ? `Un café devait être servi, 1 l'a été.`
+    : `Un café devait être servi, ${delta} a été servi.`;
+
+  return {
+    message: () => message,
+    pass: pass,
+  };
+};
+
+const RepaymentProvided: MatcherFunction = (actual: unknown) => {
+  if (!(actual instanceof CoffeeMakerHarness))
+    throw new Error('Only works with CoffeeMaker HardWare Harness');
+
+  const delta = actual.CountRepayment();
+  const pass = delta == 1;
+  const message = pass
+    ? `Un remboursement devait être effectué, 1 l'a été.`
+    : `Un remboursement devait être effectué, ${delta} l'a été.`;
+
+  return {
+    message: () => message,
+    pass: pass,
+  };
+}
+
 expect.extend({
   NoCoffeeDelivered,
   NCoffeeDelivered,
@@ -155,5 +187,7 @@ expect.extend({
   OneCupDetected,
   NoCupProvided,
   OneCupProvided,
-  OneCoffeeDeliveredWithCup
+  OneCoffeeDeliveredWithCup,
+  OneCoffeeDeliveredWithoutCup,
+  RepaymentProvided,
 });

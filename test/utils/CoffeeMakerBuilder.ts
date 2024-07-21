@@ -4,8 +4,11 @@ import { CoffeeMakerHarness } from './CoffeeMakerHarness';
 
 export class CoffeeMakerBuilder {
   public static Default(withCup: boolean = false) {
-    if (withCup) return new CoffeeMakerBuilder().BuildWithCup()
-      else return new CoffeeMakerBuilder().Build();
+    if (withCup) {
+      return new CoffeeMakerBuilder().BuildWithCup()
+    }else{
+      return new CoffeeMakerBuilder().Build();
+    }
   }
 
     public static WithPénurieGobeletsAndNoCup() {

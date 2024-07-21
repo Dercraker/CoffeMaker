@@ -8,6 +8,7 @@ export interface HardwareFakeInterface extends HardwareInterface {
   CountInvocationIsCupPresent(): number;
   CountInvocationProvideCup(): number;
   GetIsCupPresent(): boolean;
+  CountRepayment(): number;
   SetCupPresent(isCupPresent: boolean): void;
 }
 

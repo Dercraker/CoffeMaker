@@ -9,6 +9,8 @@ declare global {
       NoCupProvided(): R;
       OneCupProvided(): R;
       OneCoffeeDeliveredWithCup(): R;
+      OneCoffeeDeliveredWithoutCup(): R;
+      RepaymentProvided(): R;
     }
   }
 }
